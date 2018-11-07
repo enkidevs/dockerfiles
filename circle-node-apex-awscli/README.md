@@ -12,3 +12,15 @@ docker build \
   --label "CircleCI Node 8.10.0 with Apex and AWS CLI" \
   .
 ```
+
+- Tag the image with proper version tag
+
+```bash
+docker tag enkici/circle-node-apex-awscli enkici/circle-node-apex-awscli:8.10.0
+```
+
+- Push the image to Dockerhub
+
+```bash
+docker push enkici/circle-node-apex-awscli:8.10.0
+```

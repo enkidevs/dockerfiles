@@ -11,3 +11,15 @@ docker build \
   --label "CircleCI Node 8.10.0 with AWS cli" \
   .
 ```
+
+- Tag the image
+
+```bash
+docker tag enkici/circle-node-awscli enkici/circle-node-awscli:8.10.0
+```
+
+- Push the image
+
+```bash
+docker push enkici/circle-node-awscli:8.10.0
+```
