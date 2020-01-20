@@ -7,19 +7,18 @@
 ```bash
 docker build \
   -t enkici/circle-node-awscli \
-  --build-arg NODE_VERSION="10.16.3" \
-  --label "CircleCI Node 10.16.3 with AWS cli" \
+  --build-arg NODE_VERSION="12.14.1"
   .
 ```
 
 - Tag the image
 
 ```bash
-docker tag enkici/circle-node-awscli enkici/circle-node-awscli:10.16.3
+docker tag enkici/circle-node-awscli enkici/circle-node-awscli:12.14.1
 ```
 
 - Push the image
 
 ```bash
-docker push enkici/circle-node-awscli:10.16.3
+docker push enkici/circle-node-awscli:12.14.1
 ```
