@@ -7,7 +7,7 @@
 
 ```bash
 docker build \
-  -t enkici/circle-node-apex \
+  --tag enkici/circle-node-apex \
   --build-arg NODE_VERSION="8.10.0" \
   --label "CircleCI Node 8.10.0 with Apex" \
   .
