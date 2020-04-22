@@ -6,7 +6,7 @@
 
 ```bash
 docker build \
-  --build-arg NODE_VERSION="12.16.1"
+  --build-arg NODE_VERSION="12.16.1" \
   .
 ```
 
