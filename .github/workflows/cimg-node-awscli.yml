@@ -5,32 +5,45 @@ on:
     paths:
       - cimg-node-awscli/variables.json
       - cimg-node-awscli/Dockerfile
-    # branches:
-    #   - master
+    branches:
+      - master
+
 
 jobs:
-  deploy:
+  build-push-image:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
       - name: get Node version from variables
         id: node-version
         uses: notiz-dev/github-action-json-property@release
         with: 
-          path: 'cimg-node-awscli/variables.json'
+          path: './cimg-node-awscli/variables.json'
           prop_path: 'NODE_VERSION'
       - name: get Image Tag from variables
-        id: TAG
+        id: image-tag
         uses: notiz-dev/github-action-json-property@release
         with: 
-          path: 'cimg-node-awscli/variables.json'
+          path: './cimg-node-awscli/variables.json'
           prop_path: 'TAG'
       - name: login on DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: enkici
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build Docker Image
-        working-directory: ./cmig-node-awscli
-        run: docker build . --build-arg=$NODE_VERSION
+        working-directory: ./cimg-node-awscli
+        run: docker build --build-arg NODE_VERSION=$NODE_VERSION --tag enkici/cimg-node-awscli .
         env:
           NODE_VERSION: ${{steps.node-version.outputs.prop}}
+      - name: tag Docker Image
+        working-directory: ./cimg-node-awscli
+        run: docker tag enkici/cimg-node-awscli:latest enkici/cimg-node-awscli:$TAG
+        env:
+          TAG: ${{steps.image-tag.outputs.prop}}
+      - name: push Docker Image
+        working-directory: ./cimg-node-awscli
+        run: docker push enkici/cimg-node-awscli:$TAG
+        env:
+          TAG: ${{steps.image-tag.outputs.prop}}
