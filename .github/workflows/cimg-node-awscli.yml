@@ -24,7 +24,7 @@ jobs:
           path: './cimg-node-awscli/variables.json'
           prop_path: 'NODE_VERSION'
       - name: get Image Tag from variables
-        id: TAG
+        id: image-tag
         uses: notiz-dev/github-action-json-property@release
         with: 
           path: './cimg-node-awscli/variables.json'
@@ -39,3 +39,13 @@ jobs:
         run: docker build . --build-arg NODE_VERSION=$NODE_VERSION
         env:
           NODE_VERSION: ${{steps.node-version.outputs.prop}}
+      - name: tag Docker Image
+        working-directory: ./cimg-node-awscli
+        run: docker tag enkici/cimg-node-awscli enkici/cim-node-awscli:$TAG
+        env:
+          TAG: ${{steps.image-tag.outputs.prop}}
+      - name: push Docker Image
+        working-directory: ./cimg-node-awscli
+        run: docker push enkici/cimg-node-awscli:$TAG
+        env:
+          TAG: ${{steps.image-tag.outputs.prop}}
