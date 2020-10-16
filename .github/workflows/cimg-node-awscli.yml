@@ -2,9 +2,9 @@ name: Node & AWS CLI
 
 on:
   push:
-    paths:
-      - cimg-node-awscli/variables.json
-      - cimg-node-awscli/Dockerfile
+    # paths:
+    #   - cimg-node-awscli/variables.json
+    #   - cimg-node-awscli/Dockerfile
     # branches:
     #   - master
     pull_request:
