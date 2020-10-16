@@ -41,7 +41,7 @@ jobs:
           NODE_VERSION: ${{steps.node-version.outputs.prop}}
       - name: tag Docker Image
         working-directory: ./cimg-node-awscli
-        run: docker tag enkici/cimg-node-awscli enkici/cim-node-awscli:$TAG
+        run: docker tag enkici/cimg-node-awscli:latest enkici/cimg-node-awscli:$TAG
         env:
           TAG: ${{steps.image-tag.outputs.prop}}
       - name: push Docker Image
