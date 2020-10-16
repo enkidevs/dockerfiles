@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build Docker Image
-        working-directory: ./cmig-node-awscli
+        working-directory: ./cimg-node-awscli
         run: docker build . --build-arg=$NODE_VERSION
         env:
           NODE_VERSION: ${{steps.node-version.outputs.prop}}
