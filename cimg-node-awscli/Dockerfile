@@ -1,6 +1,4 @@
-ARG NODE_VERSION=latest
-
-FROM cimg/node:$NODE_VERSION
+FROM cimg/node:12.19.0
 
 RUN sudo apt-get update && \
   sudo apt-get install -y python python-pip python-dev && \
