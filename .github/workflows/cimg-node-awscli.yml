@@ -32,11 +32,11 @@ jobs:
       - name: login on DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: enkici
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: build Docker Image
         working-directory: ./cimg-node-awscli
-        run: docker build . --build-arg NODE_VERSION=$NODE_VERSION
+        run: docker build --build-arg NODE_VERSION=$NODE_VERSION .
         env:
           NODE_VERSION: ${{steps.node-version.outputs.prop}}
       - name: tag Docker Image
