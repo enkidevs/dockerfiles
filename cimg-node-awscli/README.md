@@ -7,7 +7,8 @@
 ```bash
 docker build \
   --tag enkici/cimg-node-awscli \
-  --build-arg NODE_VERSION="16.17.0"
+  --build-arg NODE_VERSION="16.17.0" \
+  --platform="linux/amd64" \
   .
 ```
 
