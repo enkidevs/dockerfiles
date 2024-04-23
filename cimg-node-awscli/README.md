@@ -7,7 +7,7 @@
 ```bash
 docker build \
   --tag enkici/cimg-node-awscli \
-  --build-arg NODE_VERSION="16.17.0" \
+  --build-arg NODE_VERSION="20.12.2" \
   --platform="linux/amd64" \
   .
 ```
@@ -15,11 +15,11 @@ docker build \
 - Tag the image
 
 ```bash
-docker tag enkici/cimg-node-awscli enkici/cimg-node-awscli:16.17.0
+docker tag enkici/cimg-node-awscli enkici/cimg-node-awscli:20.12.2
 ```
 
 - Push the image
 
 ```bash
-docker push enkici/cimg-node-awscli:16.17.0
+docker push enkici/cimg-node-awscli:20.12.2
 ```
